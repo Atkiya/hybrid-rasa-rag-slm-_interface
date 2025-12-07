@@ -213,33 +213,30 @@ const statusElement = document.getElementById('status');
 const RASA_SERVER_URL = "https://atkiya110-hybrid-rasa-server.hf.space/webhooks/rest/webhook";
 
 
-// ✅ Welcome message
 window.addEventListener('DOMContentLoaded', () => {
     addBotMessage({ 
         text: "Hello! I am East West University Admission Help Bot. How can I help you today?" 
     });
 });
 
-// ✅ Format message with markdown support
+
 function formatMessage(text) {
     if (!text) return "";
-    
-    // Convert **bold** to <b>
+   
     let formatted = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-    
-    // Convert *italic* to <i>
+   
     formatted = formatted.replace(/\*(.*?)\*/g, '<i>$1</i>');
     
-    // Convert URLs into clickable links
+  
     formatted = formatted.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
     
-    // Convert phone numbers to clickable
+   
     formatted = formatted.replace(/(\+?\d{1,4}[-\s]?\d{1,4}[-\s]?\d{4,})/g, '<a href="tel:$1">$1</a>');
     
     return formatted;
 }
 
-// ✅ Add typing indicator
+
 function showTypingIndicator() {
     const typingDiv = document.createElement('div');
     typingDiv.className = 'typing-indicator';
@@ -250,7 +247,6 @@ function showTypingIndicator() {
     return typingDiv;
 }
 
-// ✅ Remove typing indicator
 function hideTypingIndicator() {
     const typingIndicator = document.getElementById('typing-indicator');
     if (typingIndicator) {
@@ -258,7 +254,7 @@ function hideTypingIndicator() {
     }
 }
 
-// ✅ Add bot message with response time
+
 function addBotMessage(botResponse, responseTime = null) {
     const botMsg = document.createElement('div');
     botMsg.className = 'message bot';
@@ -267,7 +263,7 @@ function addBotMessage(botResponse, responseTime = null) {
         botMsg.innerHTML = formatMessage(botResponse.text);
     }
     
-    // ✅ Add response time if provided
+    
     if (responseTime !== null) {
         const timeSpan = document.createElement('span');
         timeSpan.className = 'response-time';
@@ -286,7 +282,7 @@ function addBotMessage(botResponse, responseTime = null) {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-// ✅ Add user message with timestamp
+
 function addUserMessage(message) {
     const userMsg = document.createElement('div');
     userMsg.className = 'message user';
@@ -305,23 +301,21 @@ function addUserMessage(message) {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-// ✅ Send message with timing
 async function sendMessage() {
     const message = messageInput.value.trim();
     if (!message) return;
     
-    // Disable input while processing
+
     messageInput.disabled = true;
     sendBtn.disabled = true;
     
-    // Add user message
+    
     addUserMessage(message);
     messageInput.value = '';
     
-    // Show typing indicator
+ 
     const typingIndicator = showTypingIndicator();
     
-    // ✅ Start timing
     const startTime = performance.now();
     
     try {
@@ -389,7 +383,6 @@ async function sendMessage() {
     }
 }
 
-// ✅ Enter key to send
 messageInput.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && !e.shiftKey) {
         sendMessage();
@@ -397,7 +390,6 @@ messageInput.addEventListener('keydown', function(e) {
     }
 });
 
-// ✅ Check server status on load
 async function checkServerStatus() {
     try {
         const response = await fetch(RASA_SERVER_URL.replace('/webhooks/rest/webhook', ''), {
@@ -413,13 +405,14 @@ async function checkServerStatus() {
     }
 }
 
-// Check status every 30 seconds
+
 checkServerStatus();
 setInterval(checkServerStatus, 30000);
 </script>
 
 </body>
 </html>
+
 
 
 
