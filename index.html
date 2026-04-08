@@ -86,7 +86,7 @@ body {
     margin-top: 5px;
 }
 
-/* ✅ Typing indicator */
+/* Typing indicator */
 .typing-indicator {
     align-self: flex-start;
     background: #e0e0e0;
@@ -124,7 +124,7 @@ body {
     }
 }
 
-/* ✅ Response time badge */
+/* Response time badge */
 .response-time {
     font-size: 0.7rem;
     color: #666;
@@ -174,12 +174,12 @@ body {
     cursor: not-allowed;
 }
 
-/* ✅ Smooth scroll */
+/* Smooth scroll */
 #chat-messages {
     scroll-behavior: smooth;
 }
 
-/* ✅ Link styling */
+/* Link styling */
 .message a {
     color: var(--color);
     text-decoration: underline;
@@ -194,7 +194,7 @@ body {
 
 <div id="chat-widget">
     <div id="chat-header">
-        <span>🎓 EWU Admissions Bot</span>
+        <span> EWU Admissions Bot</span>
         <span class="status" id="status">Online</span>
     </div>
     <div id="chat-messages"></div>
@@ -332,7 +332,7 @@ async function sendMessage() {
             })
         });
         
-        // ✅ Calculate response time
+        // Calculate response time
         const endTime = performance.now();
         const responseTime = ((endTime - startTime) / 1000).toFixed(2) + 's';
         
