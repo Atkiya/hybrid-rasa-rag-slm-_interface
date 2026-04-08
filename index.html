@@ -344,7 +344,7 @@ async function sendMessage() {
             
             if (data && data.length > 0) {
                 data.forEach((botResponse, index) => {
-                    // ✅ Only show response time on last message
+                    //  Only show response time on last message
                     const showTime = (index === data.length - 1) ? responseTime : null;
                     
                     // Add slight delay between multiple responses
